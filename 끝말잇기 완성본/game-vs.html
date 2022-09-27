@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>짝퉁 끄투</title>
+	<style>
+		header{
+			width: 100%;
+			background-color: #469536;
+		}
+		#name{
+			width: 30%;
+			background-position: center center;
+			margin-left: 35%;
+			margin-right: 35%;
+		}
+		#menu{
+			background-color: olive;
+		}
+		#menu ul{
+			margin: 0; padding: 0;
+			width: 100%;
+		}
+		#menu ul li{
+			display: inline-block;
+			list-style-type: none;
+			padding: 0% 13.5%;
+			font-size: 25px;
+		}
+		#menu ul li a{
+			color: white;
+			text-decoration: none;
+		}
+		#menu ul li a:hover{
+			color : violet;
+		}
+		footer{
+			height: 10%;
+			padding-top: 50%;
+		}
+		footer div{
+			text-align: center;
+		}
+	</style>
+	<script src="data.js"></script>
+	<script>
+		function random() {
+			return Math.floor(Math.random()*datalist.length);
+		}
+	</script>
+</head>
+<body>
+	<header><img src="name.jpg" id="name"></header>
+	<nav id="menu">
+		<ul>
+			<li><a href="home.html">Home</a></li>
+			<li><a href="game.html">Game</a></li>
+			<li><a href="help-게임규칙.html">Help</a></li>
+		</ul>
+	</nav>
+	<section>
+	<script>
+		var differntcheck=0,lose=0;
+		var i,j=0,count=0,used=0,onlyone=0;
+		var player1=prompt("첫번째 플레이어를 입력하시오");
+		var player2=prompt("두번째 플레이어를 입력하시오");
+		var length1=0, length2=0;
+		var word=datalist[random()];
+
+		var useword=new Array();
+		while(true){
+	        var answer=prompt(word);
+	        for(i=0;i<useword.length;i++){
+	        	if(answer==useword[i]){
+	        		used=1;
+	        	}
+	        }
+	        if(used==1){
+	        	if(length1>length2){
+	        		document.write("<h1>"+player1+"가 승리하였습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        	else if (length1<length2) {
+	        		document.write("<h1>"+player2+"가 승리하였습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        	else{
+	        		document.write("<h1>"+"비겼습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        }
+
+
+	        for(i=0;i<datalist.length;i++){
+	        	if(answer[answer.length-1]==datalist[i][0]){
+	        		onlyone++;
+	        	}
+	        }
+	        if(onlyone==0){
+	        	if(length1>length2){
+	        		document.write("<h1>"+player1+"가 승리하였습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        	else if (length1<length2) {
+	        		document.write("<h1>"+player2+"가 승리하였습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        	else{
+	        		document.write("<h1>"+"비겼습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        }
+
+	        for(i=0; i<datalist.length; i++){
+	        	if(answer===datalist[i]){
+	                if(word[word.length-1]===answer[0]){
+		                 word=answer;
+		                 useword[j]=answer;
+		                 lose=0;
+		                 if(j%2==0){
+		                 	length1+=answer.length;
+		                 }
+		                 else{
+		                 	length2+=answer.length;
+		                 }
+		                 j++;
+		                 break;
+	                }//첫 글자와 마지막 글자 비교
+	                else{
+	                	differntcheck=1;
+	         	        break;
+	                }
+	        	}
+	        	else{
+	        		lose++;
+	        	}
+	        }
+
+	        if(differntcheck===1||lose===datalist.length){
+	        	if(length1>length2){
+	        		document.write("<h1>"+player1+"가 승리하였습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        	else if (length1<length2) {
+	        		document.write("<h1>"+player2+"가 승리하였습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        	else{
+	        		document.write("<h1>"+"비겼습니다"+"<br>"+"<h1>");
+	        		document.write("<h3>"+player1+"-"+length1+" : "+player2+"-"+length2+"<h3>");
+	        		break;
+	        	}
+	        }
+        }
+	</script>
+	</section>
+	<footer>
+		<div>제작자 : 박근용<br><br>제작자 이메일 : qkrnsdyd1@gmail.com 제작자 전화번호 : 010-9334-9587</div>
+	</footer>
+</body>
+</html>
